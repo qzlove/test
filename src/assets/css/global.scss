@@ -1,0 +1,94 @@
+$fam1: -apple-system, Arial, PingFang SC, Microsoft Yahei, Hiragino Sans GB, Heiti SC, WenQuanYi Micro Hei, sans-serif;
+$pad1: 30px 20px;
+$color0: #416dff;
+$color1: #949494;
+$color2: #111;
+$color3: #070d2a;
+$color4: #f9fdff;
+$bsd1: 0 20px 80px rgb(0 0 0 / 10%);
+$bsd2: 0 2px 8px rgb(0 0 0 / 8%);
+$bsd3: inset 0 0 0 40px #fff, 0 0 120px 0 $color0, 0 0 50px 14px $color0;
+$trans1: all 0.3s ease-out 0s;
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.fix1 {
+    position: relative;
+    overflow: hidden;
+    zoom: 1;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.clearfix1 {
+    *overflow: hidden;
+    *zoom: 1;
+}
+
+.clearfix1:after,
+.clearfix1:before {
+    content: "";
+    display: table;
+}
+
+.clearfix1:after {
+    clear: both;
+}
+
+.font {
+    font-family: $fam1;
+    font-size: 14px;
+    color: $color2;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row-center {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-col-center {
+    display: flex;
+    align-items: center;
+}
+
+.flex-row-sb {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+}
+
+.fixed-bottom {
+    position: fixed;
+    bottom: 0;
+}
+
+.com-foot-wp {
+    left: 0;
+    width: 100%;
+
+    >.com-foot {
+        padding: 50px 0 25px 0;
+    }
+}

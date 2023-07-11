@@ -1,0 +1,190 @@
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+lengend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+article,
+aside,
+audio,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+mark,
+menu,
+nav,
+section,
+summary,
+time,
+video {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+embed,
+object {
+    outline: 0;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+em {
+    font-style: normal;
+}
+
+textarea {
+    resize: none;
+}
+
+i {
+    vertical-align: middle;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:active,
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
+legend {
+    color: #000;
+}
+
+button,
+input,
+select,
+textarea {
+    outline: 0;
+    font-size: 100%;
+}
+
+button,
+textarea {
+    border: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none !important;
+}
+
+input::-webkit-input-placeholder {
+    color: #ddd;
+}
+
+::-moz-selection {
+    background-color: $color0;
+    text-shadow: none;
+    color: #fff;
+}
+
+::selection {
+    background-color: $color0;
+    text-shadow: none;
+    color: #fff;
+}
+
+:focus {
+    outline: 0;
+}
+
+// scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+    height: 12px
+}
+
+div::-webkit-scrollbar {
+    width: 6px;
+    height: 10px
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f5f5
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    background: #bcbcbc
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #a8a8a8
+}
+
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: #a8a8a8
+}
+
+::-webkit-scrollbar-thumb:vertical:active {
+    background-color: #a8a8a8
+}
+
+.bsz-bor-box,.bsz-bor-box *,.bsz-bor-box:after,.bsz-bor-box:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.bsz-cnt-box,.bsz-cnt-box *,.bsz-cnt-box:after,.bsz-cnt-box:before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+// NProgress
+#nprogress .bar {
+    background-color: $color0 !important;
+    background-image: linear-gradient(to top, $color3 0%, $color0 100%) !important;
+    height: 3px !important;
+}

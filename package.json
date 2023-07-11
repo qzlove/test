@@ -1,0 +1,48 @@
+{
+    "name": "project",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/main.js",
+    "scripts": {
+        "serve": "set NODE_ENV=development && webpack serve --progress",
+        "build": "set NODE_ENV=production && webpack --config webpack.config.js --progress",
+        "dev": "set NODE_ENV=development && webpack --mode development --progress && echo \"打包完成（开发环境模式）\"",
+        "pro": "set NODE_ENV=production && webpack --mode production --progress && echo \"打包完成（生产环境模式）\"",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.21.3",
+        "@babel/preset-env": "^7.20.2",
+        "babel-loader": "^9.1.2",
+        "copy-webpack-plugin": "^11.0.0",
+        "css-loader": "^6.7.3",
+        "html-webpack-plugin": "^5.5.0",
+        "unplugin-auto-import": "^0.16.0",
+        "unplugin-vue-components": "^0.24.1",
+        "less": "^4.1.3",
+        "less-loader": "^11.1.0",
+        "postcss": "^8.4.21",
+        "postcss-loader": "^7.1.0",
+        "postcss-preset-env": "^8.2.0",
+        "sass": "^1.60.0",
+        "sass-loader": "^13.2.2",
+        "style-loader": "^3.3.2",
+        "vue-loader": "^17.0.1",
+        "webpack": "^5.77.0",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.13.1",
+        "worker-loader": "^3.0.8"
+    },
+    "dependencies": {
+        "normalize.css": "^8.0.1",
+        "axios": "^1.4.0",
+        "lodash-es": "^4.17.21",
+        "nprogress": "^0.2.0",
+        "swiper": "^9.3.2",
+        "vue": "^3.2.36",
+        "vue-router": "^4.1.6",
+        "vuex": "^4.0.2"
+    }
+}
