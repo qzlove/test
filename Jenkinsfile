@@ -42,8 +42,9 @@ pipeline {
                                     // patternSeparator: '[, ]+',
                                     remoteDirectorySDF: false, // 发布器是否将在远程服务器上创建日期格式化的目录，如/usr/local/test/2023/07/12/
                                     // removePrefix: '', // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
-                                    excludes: 'dist',
-                                    sourceFiles: 'dist/**',
+                                    // excludes: '',
+                                    source: 'dist',
+                                    sourceFiles: '**',
                                     remoteDirectory: '/usr/local/test',
                                     execCommand: 'echo "Files transferred successfully"',
                                 )
