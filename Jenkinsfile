@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'C:\\Users\\Mr_Q\\AppData\\Local\\Yarn\\bin\\cnpm i'
-                bat 'npm run build'
+                bat '''
+                    C:\\Users\\Mr_Q\\AppData\\Local\\Yarn\\bin\\cnpm install
+                    npm run build
+                '''
             }
         }
         stage('Create or Clear Directory') {
