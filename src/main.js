@@ -9,6 +9,6 @@ import '@/assets/css/app.scss'
 const app = createApp(App)
 
 app
-.use(router)
-.use(store)
-.mount('#app')
+    .use(router)
+    .use(store)
+    .mount('#app')

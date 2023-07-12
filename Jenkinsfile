@@ -32,14 +32,25 @@ pipeline {
                     publishers: [
                         sshPublisherDesc(
                             configName: 'Alibaba Cloud Elastic Compute Service',
-                            verbose: true,
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: '.\\dist\\*',
+                                    cleanRemote: false,
+                                    execTimeout: 120000,
+                                    flatten: false,
+                                    makeEmptyDirs: false,
+                                    noDefaultExcludes: false,
+                                    // patternSeparator: '[, ]+',
+                                    remoteDirectorySDF: false,
+                                    removePrefix: '',
+                                    excludes: '',
                                     execCommand: 'echo "Files transferred successfully"',
+                                    sourceFiles: 'dist/*',
                                     remoteDirectory: '/usr/local/test'
                                 )
-                            ]
+                            ],
+                            usePromotionTimestamp: false,
+                            useWorkspaceInPromotion: false,
+                            verbose: false
                         )
                     ]
                 )
