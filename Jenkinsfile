@@ -44,8 +44,7 @@ pipeline {
                                     removePrefix: '', // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
                                     excludes: '',
                                     execCommand: 'echo "Files transferred successfully"',
-                                    // sourceFiles: 'dist/**', // 只上传匹配到的文件
-                                    source: ['dist/'],
+                                    sourceFiles: 'dist/**/*', // dist/**只上传匹配到的文件，dist/**/*匹配目录和文件，** 匹配零个或多个目录，* 匹配零个或多个文件
                                     remoteDirectory: '/usr/local/test'
                                 )
                             ],
