@@ -1,15 +1,29 @@
+// windows使用bat， linux使用sh
 pipeline {
     agent any
     stages {
         stage('Build') {
-            steps {  // window 使用 bat， linux 使用 sh
-                bat 'npm i'
+            steps {
+                bat 'C:\Users\Mr_Q\AppData\Local\Yarn\bin\cnpm i'
                 bat 'npm run build'
+            }
+        }
+        stage('Create or Clear Directory') {
+            steps {
+                bat '''
+                    set "dir_path=D:\\1important\\project\\dev1\\test\\dist"
+
+                    if not exist "%dir_path%" (
+                        mkdir "%dir_path%"
+                    )
+
+                    del /q "%dir_path%\\*.*"
+                '''
             }
         }
         stage('Deploy') {
             steps {
-                bat 'xcopy .\\build\\* D:\\1important\\project\\dev1\\test\\dist\\ /s/e/y' // 静态资源目录
+                bat 'xcopy .\\dist\\* D:\\1important\\project\\dev1\\test\\dist /s/e/y'
             }
         }
     }
