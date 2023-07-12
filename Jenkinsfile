@@ -45,7 +45,7 @@ pipeline {
                                     excludes: '',
                                     execCommand: 'echo "Files transferred successfully"',
                                     // sourceFiles: 'dist/**', // 只上传匹配到的文件
-                                    source: ['dist/**'],
+                                    source: ['dist/'],
                                     remoteDirectory: '/usr/local/test'
                                 )
                             ],
