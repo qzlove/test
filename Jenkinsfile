@@ -34,6 +34,7 @@ pipeline {
                             configName: 'Alibaba Cloud Elastic Compute Service',
                             transfers: [
                                 sshTransfer(
+                                    execCommand: 'echo "Files transferred successfully"', // 很可能是在各个配置项功能执行之前就先执行了
                                     cleanRemote: true, // 上传前先清空远程路径下的内容
                                     // execTimeout: 120000,
                                     flatten: false, // 只上传文件，不创建目录（除了远程目录）
@@ -45,8 +46,6 @@ pipeline {
                                     // excludes: '',
                                     sourceFiles: 'dist/**',
                                     remoteDirectory: '/usr/local/test',
-                                    execCommand: 'echo "Files transferred successfully"', // 很可能是在配置项功能执行完之前就先执行了
-                                    execCommand: 'ls dist',
                                 )
                             ],
                             usePromotionTimestamp: false, // 用于控制发布器在上传文件时是否使用推广时间戳作为文件名的一部分
