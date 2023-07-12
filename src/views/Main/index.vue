@@ -1,6 +1,6 @@
 <template>
     <div>
-        hello world
+        hi man
     </div>
 </template>
 
