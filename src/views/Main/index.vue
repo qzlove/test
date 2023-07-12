@@ -1,6 +1,6 @@
 <template>
     <div>
-        hi man
+        the shit
     </div>
 </template>
 
