@@ -31,11 +31,13 @@ pipeline {
                 sshPublisher(
                     publishers: [
                         sshPublisherDesc(
-                            configName: 'b789f74e-379d-442e-b06c-0b97c5cc3081',
+                            configName: 'Alibaba Cloud Elastic Compute Service',
                             verbose: true,
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'cd /usr/local/test && rm -rf * && scp -r D:/1important/project/dev1/test/dist/* /usr/local/test'
+                                    sourceFiles: 'D:/1important/project/dev1/test/dist/*',
+                                    execCommand: 'echo 成功部署到云服务',
+                                    remoteDirectory: 'root@:8.134.177.223/usr/local/test'
                                 )
                             ]
                         )
