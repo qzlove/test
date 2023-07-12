@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'C:\Users\Mr_Q\AppData\Local\Yarn\bin\cnpm i'
+                bat 'C:\\Users\\Mr_Q\\AppData\\Local\\Yarn\\bin\\cnpm i'
                 bat 'npm run build'
             }
         }
