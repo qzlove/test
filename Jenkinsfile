@@ -34,9 +34,9 @@ pipeline {
                             configName: 'Alibaba Cloud Elastic Compute Service',
                             transfers: [
                                 sshTransfer(
-                                    cleanRemote: false,
+                                    cleanRemote: true, // 上传前先清空远程路径下的内容
                                     execTimeout: 120000,
-                                    flatten: false,
+                                    flatten: true, // 不在远程路径下新建这里配置sourceFiles里面的dist
                                     makeEmptyDirs: false,
                                     noDefaultExcludes: false,
                                     // patternSeparator: '[, ]+',
@@ -44,13 +44,13 @@ pipeline {
                                     removePrefix: '',
                                     excludes: '',
                                     execCommand: 'echo "Files transferred successfully"',
-                                    sourceFiles: 'dist/*',
+                                    sourceFiles: 'dist/**',
                                     remoteDirectory: '/usr/local/test'
                                 )
                             ],
                             usePromotionTimestamp: false,
                             useWorkspaceInPromotion: false,
-                            verbose: false
+                            verbose: true, // 显示日志
                         )
                     ]
                 )
