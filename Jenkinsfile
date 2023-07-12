@@ -36,7 +36,7 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: './dist/*',
-                                    execCommand: 'scp -r',
+                                    execCommand: 'echo "Files transferred successfully"',
                                     remoteDirectory: '/usr/local/test'
                                 )
                             ]
