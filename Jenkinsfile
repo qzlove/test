@@ -36,7 +36,7 @@ pipeline {
                             transfers: [
                                 sshTransfer(
                                     sourceFiles: './dist/*',
-                                    execCommand: 'echo 成功部署到云服务',
+                                    execCommand: 'scp -r',
                                     remoteDirectory: '/usr/local/test'
                                 )
                             ]
