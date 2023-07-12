@@ -26,5 +26,22 @@ pipeline {
                 bat 'xcopy .\\dist\\* D:\\1important\\project\\dev1\\test\\dist /s/e/y'
             }
         }
+        stage('Deploy to Aliyun') {
+            steps {
+                sshPublisher(
+                    publishers: [
+                        sshPublisherDesc(
+                            configName: 'b789f74e-379d-442e-b06c-0b97c5cc3081',
+                            verbose: true,
+                            transfers: [
+                                sshTransfer(
+                                    execCommand: 'cd /usr/local/test && rm -rf * && scp -r D:/1important/project/dev1/test/dist/* /usr/local/test'
+                                )
+                            ]
+                        )
+                    ]
+                )
+            }
+        }
     }
 }

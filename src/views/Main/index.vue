@@ -1,6 +1,6 @@
 <template>
     <div>
-        the shit
+        hello world oh no god
     </div>
 </template>
 

@@ -22,7 +22,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, 'dist'), // 输出目录的路径
-        publicPath: '/', // 此输出目录对应的公开 URL
+        publicPath: '/test/', // 此输出目录对应的公开 URL
         filename: 'js/[name].[contenthash:8].js',
         chunkFilename: 'js/[name].[contenthash:8].chunk.js',
         clean: true // 清空输出目录，webpack5开始可以直接配置清空，不再需要安装CleanWebpackPlugin
@@ -174,7 +174,7 @@ module.exports = {
             template: './public/index.html'
         }),
         new DefinePlugin({
-            BASE_URL: '"/"',
+            BASE_URL: '"/test/"',
             __VUE_OPTIONS_API__: true, // 是否支持optionsApi
             __VUE_PROD_DEVTOOLS__: false // 在生产环境下是否支持devtools
         }),
