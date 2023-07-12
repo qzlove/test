@@ -35,7 +35,7 @@ pipeline {
                             verbose: true,
                             transfers: [
                                 sshTransfer(
-                                    sourceFiles: './dist/*',
+                                    sourceFiles: '.\\dist\\*',
                                     execCommand: 'echo "Files transferred successfully"',
                                     remoteDirectory: '/usr/local/test'
                                 )
