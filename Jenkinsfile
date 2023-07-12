@@ -46,7 +46,7 @@ pipeline {
                                     sourceFiles: 'dist/**',
                                     remoteDirectory: '/usr/local/test',
                                     // execCommand: 'mv dist/** /usr/local/test && rm -rf dist && echo "Files transferred successfully"',
-                                    execCommand: 'ls dist"',
+                                    execCommand: 'ls dist',
                                 )
                             ],
                             usePromotionTimestamp: false, // 用于控制发布器在上传文件时是否使用推广时间戳作为文件名的一部分
