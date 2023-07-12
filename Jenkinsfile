@@ -37,8 +37,8 @@ pipeline {
                                     cleanRemote: true, // 上传前先清空远程路径下的内容
                                     execTimeout: 120000,
                                     flatten: true, // 不在远程路径下新建这里配置sourceFiles里面的dist
-                                    makeEmptyDirs: false, // 启用 makeEmptyDirs 可能会在远程服务器上创建大量的空目录，因此应该根据需要谨慎使用。如果您只想创建指定的目录及其所需的父目录，而不想创建空目录，可以将 makeEmptyDirs 设置为 false。当 makeEmptyDirs 设置为 true 时，发布器会在远程服务器上创建空目录，以确保所有指定的目录都存在。当 makeEmptyDirs 设置为 false 时，发布器会只创建指定的目录及其所需的父目录，而不会创建空目录。
-                                    noDefaultExcludes: true, // 设置为 true 时，发布器将不会使用默认的文件排除规则，而会上传所有匹配的文件和子目录，包括隐藏文件和子目录。当 noDefaultExcludes 设置为 false 时，发布器将使用默认的文件排除规则，排除指定的文件和子目录，例如 .git 目录和 .svn 目录等。
+                                    makeEmptyDirs: true, // 启用 makeEmptyDirs 可能会在远程服务器上创建大量的空目录，因此应该根据需要谨慎使用。如果您只想创建指定的目录及其所需的父目录，而不想创建空目录，可以将 makeEmptyDirs 设置为 false。当 makeEmptyDirs 设置为 true 时，发布器会在远程服务器上创建空目录，以确保所有指定的目录都存在。当 makeEmptyDirs 设置为 false 时，发布器会只创建指定的目录及其所需的父目录，而不会创建空目录。
+                                    noDefaultExcludes: false, // 设置为 true 时，发布器将不会使用默认的文件排除规则，而会上传所有匹配的文件和子目录，包括隐藏文件和子目录。当 noDefaultExcludes 设置为 false 时，发布器将使用默认的文件排除规则，排除指定的文件和子目录，例如 .git 目录和 .svn 目录等。
                                     // patternSeparator: '[, ]+',
                                     remoteDirectorySDF: false, // 发布器是否将在远程服务器上创建日期格式化的目录，如/usr/local/test/2023/07/12/
                                     removePrefix: '', // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
