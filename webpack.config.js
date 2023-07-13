@@ -4,7 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader/dist/index')
 const path = require('path')
 
-const _DevOrPro = process.env.NODE_ENV.indexOf('development') != -1
+const _DevOrPro = false // process.env.NODE_ENV.indexOf('development') != -1
 console.log('process.env.NODE_ENV:', process.env.NODE_ENV)
 console.log('_DevOrPro:', _DevOrPro)
 
