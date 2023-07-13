@@ -30,12 +30,12 @@ jobs:
       - name: Clear remote directory
         uses: appleboy/ssh-action@master
         with:
-            ssh-private-key: ${{ secrets.PRIVATEKEY1 }}
-            username: root
             host: ${{ secrets.ALIY_ECS_HOST }}
-            port: 22
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            port: ${{ secrets.PORT }}
             script: |
-              cd /usr/local/test
+              cd ${{ secrets.REMOTEDIR }}
               rm -rf *
       # 安装依赖
       - name: 安装依赖
@@ -52,13 +52,13 @@ jobs:
           # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致
           ARGS: '-avzr --delete'
           # 源目录
-          SOURCE: 'dist'
-          # 服务器ip
+          SOURCE: ${{ secrets.SOURCEDIR }}
+          # 服务器host
           REMOTE_HOST: ${{ secrets.ALIY_ECS_HOST }}
           # 用户
-          REMOTE_USER: 'root'
+          REMOTE_USER: ${{ secrets.USERNAME }}
           # 目标地址
-          TARGET: '/usr/local/test'
+          TARGET: ${{ secrets.REMOTEDIR }}
       # 推送信息到微信
       # - name: 推送信息到微信
       #   uses: easychen/github-action-server-chan@main
