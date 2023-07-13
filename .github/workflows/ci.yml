@@ -52,9 +52,9 @@ jobs:
           # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致
           ARGS: '-avzr --delete'
           # 源目录
-          SOURCE: ${{ secrets.SOURCEDIR }}
+          SOURCE: /list
           # 服务器host
-          REMOTE_HOST: ${{ secrets.ALIY_ECS_HOST }}
+          REMOTE_HOST: /usr/local/test
           # 用户
           REMOTE_USER: ${{ secrets.USERNAME }}
           # 目标地址
@@ -64,7 +64,11 @@ jobs:
         with:
           args: |
             # 进入目标目录
-            ssh -i $PRIVATEKEY1 $USERNAME@$ALIY_ECS_HOST "cd $SOURCEDIR && \
+            ssh -i $PRIVATEKEY1 $USERNAME@$ALIY_ECS_HOST "export LANG=en_US.UTF-8 && \
+                export LANGUAGE=en_US.UTF-8 && \
+                export LC_ALL=en_US.UTF-8 && \
+                # 进入目录
+                cd $SOURCEDIR && \
                 # 清空目录
                 rm -rf * && \
                 # 上传文件
