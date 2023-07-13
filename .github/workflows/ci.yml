@@ -49,8 +49,8 @@ jobs:
         env:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATEKEY1 }}
-          # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致，并保留目标服务器上相对于源目录下已存在的文件或文件夹
-          ARGS: '-avzr --delete --ignore-existing'
+          # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致；--ignore-existing：保留目标服务器上相对于源目录下已存在的文件或文件夹
+          ARGS: '-avzr --delete'
           # 服务器host
           REMOTE_HOST: ${{ secrets.ALIY_ECS_HOST }}
           # 用户
@@ -60,7 +60,7 @@ jobs:
           # 目标地址 /xx
           TARGET: ${{ secrets.REMOTEDIR }}
           # 1表示删除本地文件路径（SOURCE）的第一个前缀/xx
-          STRIP_COMPONENTS: 1
+          # STRIP_COMPONENTS: 1
         with:
           args: |
             # 进入目标目录
