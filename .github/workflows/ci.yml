@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     # 表示你这个工作流程要运行在什么操作系统上 如ubuntu-latest、Mac、Windows
-    runs-on: CentOS-7.9
+    runs-on: ubuntu-latest
     steps:
       # 获取代码
       - name: 迁出代码
