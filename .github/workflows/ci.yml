@@ -60,7 +60,7 @@ jobs:
           # 目标地址
           TARGET: ${{ secrets.REMOTEDIR }}
           # 1表示删除本地文件路径（SOURCE）的第一个前缀/xx
-          STRIP_COMPONENTS: 1
+        #   STRIP_COMPONENTS: 1
         with:
           args: |
             # 进入目标目录
