@@ -23,6 +23,20 @@ jobs:
         #提供参数
         with:
           node-version: lts/*
+      # 安装ssh
+      - name: Install openssh-client
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
+      # 清空远程目录下的东西
+      - name: Clear remote directory
+        uses: easingthemes/ssh-action@v2
+        with:
+            ssh-private-key: ${{ secrets.PRIVATEKEY1 }}
+            username: root
+            host: ${{ secrets.ALIY_ECS_HOST }}
+            port: 22
+            script: |
+              cd /usr/local/test
+              rm -rf *
       # 安装依赖
       - name: 安装依赖
         run: yarn
