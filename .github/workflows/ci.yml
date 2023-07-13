@@ -52,7 +52,7 @@ jobs:
           # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致
           ARGS: '-avzr --delete'
           # 源目录
-          SOURCE: ${{ secrets.SOURCEDIR }}
+          # SOURCE: ${{ secrets.SOURCEDIR }}
           # 服务器host
           REMOTE_HOST: ${{ secrets.ALIY_ECS_HOST }}
           # 用户
@@ -60,9 +60,10 @@ jobs:
           # 目标地址
           TARGET: ${{ secrets.REMOTEDIR }}
         with:
+            local: ${{ secrets.SOURCEDIR }}/**
             # 删除远程服务器上已经存在的同名文件或目录
             rmRemote: true
-            # 删除本地文件路径的n级前缀，如1表示去掉SOURCE中从左往右数第一个/xx部分
+            # 删除本地文件路径的n级前缀，如1表示去掉SOURCE中从左往右数第一个xx部分
             stripComponents: 1
       # 推送信息到微信
       # - name: 推送信息到微信
