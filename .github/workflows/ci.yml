@@ -68,7 +68,7 @@ jobs:
                 export LANGUAGE=en_US.UTF-8 && \
                 export LC_ALL=en_US.UTF-8 && \
                 # 进入目录
-                cd $SOURCEDIR && \
+                cd /usr/local/test && \
                 # 清空目录
                 rm -rf * && \
                 # 上传文件
