@@ -23,7 +23,7 @@ jobs:
         #提供参数
         with:
           node-version: lts/*
-      # 安装ssh
+      # 安装openssh-client
       - name: Install openssh-client
         run: sudo apt-get update && sudo apt-get install -y openssh-client
       # 清空远程目录下的东西
@@ -59,6 +59,11 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           # 目标地址
           TARGET: ${{ secrets.REMOTEDIR }}
+        with:
+            # 删除远程服务器上已经存在的同名文件或目录
+            rmRemote: true
+            # 删除本地文件路径的n级前缀，如1表示去掉SOURCE中从左往右数第一个/xx部分
+            stripComponents: 1
       # 推送信息到微信
       # - name: 推送信息到微信
       #   uses: easychen/github-action-server-chan@main
