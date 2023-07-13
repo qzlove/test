@@ -1,3 +1,4 @@
+# 可以创建多个ci.yml文件，用于触发多条流水线来执行ci cd任务
 name: ci集成并cd部署到服务器
 
 on:
@@ -57,9 +58,9 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           # 源目录 xx/
           SOURCE: ${{ secrets.SOURCEDIR }}
-          # 目标地址 /xx
+          # 目标地址 /xx/xxx/xxxx
           TARGET: ${{ secrets.REMOTEDIR }}
-          # 1表示删除本地文件路径（SOURCE）的第一个前缀/xx
+          # 1表示删除本地文件路径（假设SOURCE: /xx/xxx/xxxx）的第一个前缀/xx
           # STRIP_COMPONENTS: 1
         with:
           args: |
