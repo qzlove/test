@@ -28,7 +28,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y openssh-client
       # 清空远程目录下的东西
       - name: Clear remote directory
-        uses: easingthemes/ssh-action@v2
+        uses: appleboy/ssh-action@master
         with:
             ssh-private-key: ${{ secrets.PRIVATEKEY1 }}
             username: root
