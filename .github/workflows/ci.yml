@@ -24,19 +24,19 @@ jobs:
         with:
           node-version: lts/*
       # 安装openssh-client
-      - name: Install openssh-client
-        run: sudo apt-get update && sudo apt-get install -y openssh-client
+    #   - name: Install openssh-client
+    #     run: sudo apt-get update && sudo apt-get install -y openssh-client
       # 清空远程目录下的东西
-      - name: Clear remote directory
-        uses: appleboy/ssh-action@master
-        with:
-            host: ${{ secrets.ALIY_ECS_HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            port: ${{ secrets.PORT }}
-            script: |
-              cd ${{ secrets.REMOTEDIR }}
-              rm -rf *
+    #   - name: Clear remote directory
+    #     uses: appleboy/ssh-action@master
+    #     with:
+    #         host: ${{ secrets.ALIY_ECS_HOST }}
+    #         username: ${{ secrets.USERNAME }}
+    #         password: ${{ secrets.PASSWORD }}
+    #         port: ${{ secrets.PORT }}
+    #         script: |
+    #           cd ${{ secrets.REMOTEDIR }}
+    #           rm -rf *
       # 安装依赖
       - name: 安装依赖
         run: yarn
@@ -60,4 +60,8 @@ jobs:
           # 目标地址
           TARGET: ${{ secrets.REMOTEDIR }}
           # 删除本地文件路径的前缀
-          STRIP_COMPONENTS: 1
+          STRIP_COMPONENTS: 2
+        with:
+          beforeDeploy: |
+            # 清空目标目录
+            ssh -i $PRIVATEKEY1 $USERNAME@$ALIY_ECS_HOST "rm -rf $REMOTEDIR/
