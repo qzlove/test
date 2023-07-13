@@ -1,0 +1,53 @@
+name: ci集成并cd部署到服务器
+
+on:
+  push:
+    # push 代码的时候 哪个分支会受到影响
+    branches:
+      - feature
+
+# 推送之后执行一系列的任务
+jobs:
+  build:
+    # 表示你这个工作流程要运行在什么操作系统上 如ubuntu-latest、Mac、Windows
+    runs-on: CentOS-7.9
+    steps:
+      # 获取代码
+      - name: 迁出代码
+        # 使用action库 action/checkout获取代码
+        uses: actions/checkout@main
+      # 安装Node环境
+      - name: 安装node.js
+        # 使用action库  actions/setup-node安装node
+        uses: actions/setup-node@main
+        #提供参数
+        with:
+          node-version: lts/*
+      # 安装依赖
+      - name: 安装依赖
+        run: npm install
+      # 打包
+      - name: 打包
+        run: npm run build
+      # 上传到服务器
+      - name: 上传到服务器
+        uses: easingthemes/ssh-deploy@main
+        env:
+          # 私钥
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATEKEY1 }}
+          # SCP参数 以归档、压缩、递归和保留文件属性的方式传输文件，并删除目标服务器上相对于源目录下不存在的文件或文件夹，确保目标服务器上的文件与源目录保持一致
+          ARGS: '-avzr --delete'
+          # 源目录
+          SOURCE: 'dist'
+          # 服务器ip
+          REMOTE_HOST: ${{ secrets.ALIY_ECS_HOST }}
+          # 用户
+          REMOTE_USER: 'root'
+          # 目标地址
+          TARGET: '/usr/local/test'
+      # 推送信息到微信
+      # - name: 推送信息到微信
+      #   uses: easychen/github-action-server-chan@main
+      #   with:
+      #     sendkey: ${{ secrets.WXSENDKEY }}
+      #     title: 'ci集成并cd部署到服务器完毕'
