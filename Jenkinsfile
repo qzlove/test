@@ -1,17 +1,21 @@
 // windows使用bat， linux使用sh
 pipeline {
     agent any
+    environment {
+        diyKey = '自定义变量，当然也可以在后台自定义全局变量'
+        diyKeyRead = "读取：${diyKey}"
+    }
     stages {
         stage('Build') {
             steps {
-                bat 'C:\\Users\\Mr_Q\\AppData\\Local\\Yarn\\bin\\cnpm i'
+                bat '${pipBuildBat}'
                 bat 'npm run build'
             }
         }
         stage('Create or Clear Directory') {
             steps {
                 bat '''
-                    set "dir_path=D:\\1important\\project\\dev1\\test\\dist"
+                    set "dir_path=${testDistPath}"
 
                     if not exist "%dir_path%" (
                         mkdir "%dir_path%"
@@ -23,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat 'xcopy .\\dist\\* D:\\1important\\project\\dev1\\test\\dist /s/e/y'
+                bat 'xcopy .\\dist\\* ${testDistPath} /s/e/y'
             }
         }
         stage('Deploy to Aliyun') {
@@ -34,7 +38,7 @@ pipeline {
                             configName: 'Alibaba Cloud Elastic Compute Service',
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'echo "Files transferred successfully"', // 很可能是在各个配置项功能执行之前就先执行了
+                                    execCommand: 'echo "Files transferred successfully ${diyKeyRead}"', // 很可能是在各个配置项功能执行之前就先执行了
                                     cleanRemote: true, // 上传前先清空远程路径下的内容
                                     // execTimeout: 120000,
                                     flatten: false, // 只上传文件，不创建目录（除了远程目录）
@@ -42,10 +46,10 @@ pipeline {
                                     // noDefaultExcludes: false, // 设置为 true 时，发布器将不会使用默认的文件排除规则，而会上传所有匹配的文件和子目录，包括隐藏文件和子目录。当 noDefaultExcludes 设置为 false 时，发布器将使用默认的文件排除规则，排除指定的文件和子目录，例如 .git 目录和 .svn 目录等。
                                     // patternSeparator: '[, ]+',
                                     remoteDirectorySDF: false, // 发布器是否将在远程服务器上创建日期格式化的目录，如/usr/local/test/2023/07/12/
-                                    removePrefix: 'dist', // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
+                                    removePrefix: '${testDeployAlyRemovePrefix}', // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
                                     // excludes: '',
-                                    sourceFiles: 'dist/**',
-                                    remoteDirectory: '/usr/local/test',
+                                    sourceFiles: '${testDeployAlySourceFiles}',
+                                    remoteDirectory: '${testDeployAlyRemoteDirectory}',
                                 )
                             ],
                             usePromotionTimestamp: false, // 用于控制发布器在上传文件时是否使用推广时间戳作为文件名的一部分
