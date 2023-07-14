@@ -38,7 +38,7 @@ pipeline {
                             configName: 'Alibaba Cloud Elastic Compute Service',
                             transfers: [
                                 sshTransfer(
-                                    execCommand: 'echo "Files transferred successfully ${diyKeyRead}"', // 很可能是在各个配置项功能执行之前就先执行了
+                                    execCommand: "echo \"Files transferred successfully\" ${diyKeyRead}", // 很可能是在各个配置项功能执行之前就先执行了
                                     cleanRemote: true, // 上传前先清空远程路径下的内容
                                     // execTimeout: 120000,
                                     flatten: false, // 只上传文件，不创建目录（除了远程目录）
