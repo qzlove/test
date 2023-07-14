@@ -2,7 +2,7 @@
 pipeline {
     agent any
     environment {
-        diyKey = '自定义变量，当然也可以在后台自定义全局变量'
+        diyKey = '自定义变量，当然也可以在后台自定义全局变量，注意在双引号里面使用读取变量的语法'
         diyKeyRead = "读取：${diyKey}"
     }
     stages {
