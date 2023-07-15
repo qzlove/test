@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                bat "xcopy .\\dist\\* ${testDistPath} /s/e/y"
+                bat "xcopy .\\dist\\* ${testDistPath}\\ /s/e/y"
             }
         }
         stage('Deploy to Aliyun') {
