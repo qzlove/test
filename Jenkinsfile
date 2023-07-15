@@ -46,9 +46,9 @@ pipeline {
                                     // noDefaultExcludes: false, // 设置为 true 时，发布器将不会使用默认的文件排除规则，而会上传所有匹配的文件和子目录，包括隐藏文件和子目录。当 noDefaultExcludes 设置为 false 时，发布器将使用默认的文件排除规则，排除指定的文件和子目录，例如 .git 目录和 .svn 目录等。
                                     // patternSeparator: '[, ]+',
                                     remoteDirectorySDF: false, // 发布器是否将在远程服务器上创建日期格式化的目录，如/usr/local/test/2023/07/12/
-                                    removePrefix: "${testDeployAlyRemovePrefix}", // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
+                                    removePrefix: "${deployAlyRemovePrefix}", // 用于控制发布器在上传文件时是否删除本地文件路径的前缀
                                     // excludes: '',
-                                    sourceFiles: "${testDeployAlySourceFiles}",
+                                    sourceFiles: "${deployAlySourceFiles}",
                                     remoteDirectory: "${testDeployAlyRemoteDirectory}",
                                 )
                             ],
